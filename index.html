@@ -1,4 +1,4 @@
- <!DOCTYPE html>  
+  <!DOCTYPE html>  
 <html lang="ja">
     <head>
         <meta charset="utf-8" />
@@ -11,8 +11,9 @@
     </head>
 
     <body>
-        <div class="contact">
-            <h1 class="contact-ttl" id="edit_area2">イベント申込フォーム</h1>       
+        <div class="contact">           
+            <h1 class="contact-ttl" id="edit_area2">イベント申込フォーム</h1>
+            <img src="top.jpg" alt="写真" width="100%" height="100%">   
             <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeUNp29SY-H2vdaT_CD5L-FUJJf8ChnS1wcJovDzrk0WYxN7Q/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
 
                 <table class="contact-table">
@@ -45,7 +46,7 @@
                         <th class="contact-item">イベント名</th>
                         <td class="contact-body">
                             <label class="contact-keitai">
-                                <input type="radio" name="entry.2100736645" value="2023年1月30日（月）明日から役立つセミナー「MRI」"/>
+                                <input type="radio" name="entry.2100736645" required="required" value="2023年1月30日（月）明日から役立つセミナー「MRI」"/>
                                 <span class="contact-skill-txt">2023年1月30日（月）明日から役立つセミナー「MRI」</span>
                             </label>
                             <label class="contact-skill">
@@ -64,7 +65,7 @@
                             </label>
                             <label class="contact-skill">
                                 <input type="radio" id="kaijyo" name="entry.1424661284" value="会場参加"/>
-                                <span class="contact-skill-txt" id="edit_area">会場参加　会員限定 先着12名（開催3日前まで受付）</span>
+                                <span class="contact-skill-txt" id="edit_area">会場参加　会員限定 先着12名（3日前まで受付）</span>
                             </label>                                                           
                         </td>
                     </tr>
@@ -82,11 +83,14 @@
                             </label>
                             <label class="contact-skill">
                                 <input type="radio" name="entry.153040154" value="非会員" onclick="connecttext2('textforscb3',this.checked);"/>
-                                <span class="contact-skill-txt">非会員（先に参加費をお支払いください）</span>
+                                <span class="contact-skill-txt">非会員（先に参加費をお支払いください）</span><br>
+                                <span class="contact-skill-txt" style="color:red">　↓　↓　↓　↓　参加費がまだの方はこちらから</span><br>
+                                <span class="contact-skill-txt"><a href="https://buy.stripe.com/00gdTZaJl3pzboQ9AF" class="btn" target="_blank">参加費支払い</a><font size="2">  領収書番号はメールで届きます</font></span>
                             </label>
                             <label class="contact-skill">
                                 <input type="radio" name="entry.153040154" value="一般府民" onclick="connecttext4('textforscb3',this.checked);"/>
-                                <span class="contact-skill-txt">一般府民の方は事務所までお問い合わせください</span>
+                                <span class="contact-skill-txt">一般府民の方は事務所までお問い合わせください</span><br>
+                                <span class="contact-skill-txt"><font size="2">TEL：06-6765-0301（平日12時～16時）メール：osaka@daihougi.ne.jp</font></span>
                             </label>
                         </td>
                     </tr>
@@ -94,15 +98,15 @@
                     <tr>
                         <th class="contact-item">大放技番号</th>
                         <td class="contact-body">
-                            <input type="number" name="entry.336341927" id ="dn" class="form-text3"/>
-                             <font size="2"> 大放技会員のみ　4桁の数字、協賛会員・学生は"0"</font>
+                            <input type="number" name="entry.336341927" required="required" id ="dn" class="form-text3"/>
+                             <font size="2"> 大放技会員は必須（4桁の数字）協賛会員・学生は"0"</font>
                         </td>
                     </tr>  
                     <tr>
                         <th class="contact-item">ブロック名</th>
                         <td class="contact-body">
-                            <select name="entry.1285550799" class="form-select" id ="bn">
-                            　　<option value="ブロック名" >ブロック名</option>
+                            <select name="entry.1285550799" required="required" class="form-select" id ="bn">
+                            　　<option value="ブロック名" >選択してください</option>
                                 <option value="中央ブロック">中央ブロック</option>
                                 <option value="東ブロック" >東ブロック</option>
                                 <option value="西ブロック" >西ブロック</option>
@@ -110,27 +114,27 @@
                                 <option value="北ブロック" >北ブロック</option>
                                 <option value="協賛会員" >協賛会員</option>
                                 <option value="学生" >学生</option>
-                            </select> <font size="2"> 大放技会員、協賛会員、学生</font>
+                            </select> <font size="2"> 大放技会員、協賛会員、学生は必須</font>
                         </td>
                     </tr>
                     <tr>
                         <th class="contact-item">日放技番号</th>
                         <td class="contact-body">
-                            <input type="number" name="entry.2017430449" id ="nn" class="form-text3"/>
-                             <font size="2"> 技師会会員　5桁の数字、協賛会員・学生は"0"</font>
+                            <input type="number" name="entry.2017430449" required="required" id ="nn" class="form-text3"/>
+                             <font size="2"> 日放技会員は必須（5桁の数字）協賛会員・学生は"0"</font>
                         </td>
                     </tr>
                     <tr>
                         <th class="contact-item">都道府県</th>
                         <td class="contact-body">
-                            <input type="text" name="entry.681003941" id ="todoufuken" class="form-text3"/>
-                             <font size="2">他府県会員のみ </font>
+                            <input type="text" name="entry.681003941" required="required" id ="todoufuken" disabled="disabled" class="form-text3"/>
+                             <font size="2">他府県会員は必須</font>
                         </td>
                     </tr>
                     <tr>
                         <th class="contact-item">領収書番号</th>
                         <td class="contact-body">
-                            <input type="number" id ="textforscb3" name="entry.1059499032" class="form-text3" disabled="disabled"/>  <font size="2">非会員の方　8桁の数字（ハイフンは不要）</font>
+                            <input type="number" id ="textforscb3" name="entry.1059499032" class="form-text3" required="required" disabled="disabled"/>  <font size="2">非会員は必須（8桁の数字 ハイフンは不要）</font>
                         </td>
                     </tr>
                     <tr>
@@ -141,7 +145,7 @@
                     </tr>
                 </table>
 
-                <input class="contact-submit" id="conf" type="submit" name="submit" value="送　信"/>
+                <input class="contact-submit" id="conf" type="submit" name="submit" value="参加申込"/>
             </form>
             <script>
                 let submitted = false;
@@ -172,49 +176,69 @@
                   input.setCustomValidity(''); // エラーメッセージのクリア
                 }
               }
-              function connecttext0(id, ischecked ) {
+              function connecttext0(id, ischecked ) {           //大放技会員の場合
                   // チェック状態に合わせて有効・無効を切り替える
                   if(ischecked==true){
                       document.getElementById("textforscb3").disabled = true;                  
                       document.getElementById("nn").disabled = false;                 
                       document.getElementById("dn").disabled = false;                 
                       document.getElementById("bn").disabled = false;
+                      document.getElementById("todoufuken").disabled = true;
+                      
+                      document.getElementById("conf").style.backgroundColor = "blue";  //府民用から復活
+                      document.getElementById("conf").value = "参加申込";  //府民用から復活
+                      document.getElementById("conf").disabled = false;  //府民用から復活
                   }
               }
-              function connecttext1(id, ischecked ) {
+              function connecttext1(id, ischecked ) {           //他府県会員の場合
                   // チェック状態に合わせて有効・無効を切り替える
                   if(ischecked==true){
                       document.getElementById("textforscb3").disabled = true;            
                       document.getElementById("nn").disabled = false;                 
                       document.getElementById("dn").disabled = true;                 
                       document.getElementById("bn").disabled = true;
+                      document.getElementById("todoufuken").disabled = false;
+
+                      document.getElementById("conf").style.backgroundColor = "blue";  //府民用から復活
+                      document.getElementById("conf").value = "参加申込";  //府民用から復活
+                      document.getElementById("conf").disabled = false;  //府民用から復活
                   }
               }
-              function connecttext2(id, ischecked ) {
+              function connecttext2(id, ischecked ) {            //非会員の場合
                   // チェック状態に合わせて有効・無効を切り替える
                   if(ischecked==true){
                       document.getElementById("textforscb3").disabled = false;
                       document.getElementById("nn").disabled = true;                 
                       document.getElementById("dn").disabled = true;                 
                       document.getElementById("bn").disabled = true;
+                      document.getElementById("todoufuken").disabled = true;
+                      
+                      document.getElementById("conf").style.backgroundColor = "blue";  //府民用から復活
+                      document.getElementById("conf").value = "参加申込";  //府民用から復活
+                      document.getElementById("conf").disabled = false;  //府民用から復活                
                   }
               }
-              function connecttext3(id, ischecked ) {
+             //  function connecttext3(id, ischecked ) {
+                  // チェック状態に合わせて有効・無効を切り替える
+                  // if(ischecked==true){
+                     //  document.getElementById("textforscb3").disabled = true;
+                     //  document.getElementById("nn").disabled = true;                 
+                     //  document.getElementById("dn").disabled = true;                 
+                     //  document.getElementById("bn").disabled = true;
+                  // }
+             //  }
+              function connecttext4(id, ischecked ) {            //府民の場合
                   // チェック状態に合わせて有効・無効を切り替える
                   if(ischecked==true){
                       document.getElementById("textforscb3").disabled = true;
                       document.getElementById("nn").disabled = true;                 
                       document.getElementById("dn").disabled = true;                 
                       document.getElementById("bn").disabled = true;
-                  }
-              }
-              function connecttext4(id, ischecked ) {
-                  // チェック状態に合わせて有効・無効を切り替える
-                  if(ischecked==true){
-                      document.getElementById("textforscb3").disabled = true;
-                      document.getElementById("nn").disabled = true;                 
-                      document.getElementById("dn").disabled = true;                 
-                      document.getElementById("bn").disabled = true;
+                      document.getElementById("todoufuken").disabled = true;
+
+                      document.getElementById("conf").style.backgroundColor = "gray";  //府民用グレイアウトする
+                      document.getElementById("conf").value = "申込不可";  //府民用レイアウトする
+                      document.getElementById("conf").disabled = true;  //府民用押せなくする                      
                   }
               }      
               //会場参加の締め切り日設定
