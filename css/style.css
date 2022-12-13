@@ -9,6 +9,12 @@ body {
     font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 }
 
+input:disabled,
+select:disabled
+ {
+    background: #ccc;
+  }
+
 @media screen and ( min-width:480px )
 {
     .contact {
@@ -52,7 +58,7 @@ body {
 .contact-item {
     text-align: left;
     width: 20%;
-    background-color: #eee;
+    background-color: #1ee9e124;
 }
 
 .contact-body {
@@ -158,6 +164,14 @@ body {
     cursor: pointer;
 }
 
+.btn {
+    border-radius: 5px;
+    background-color: #fffacd;
+    padding: 4px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid #333;
+  }
 
 /* スマホだけに適用するCSS */
 @media screen and ( max-width:479px )
@@ -205,7 +219,7 @@ body {
     font-size: 12px;
     text-align: center;
     width: 28;
-    background-color: #1ee9e124;
+    background-color: #ccc;
 }
 
 .contact-body {
@@ -312,4 +326,13 @@ body {
     -moz-appearance: none;
     cursor: pointer;
 }
+
+.btn {
+    border-radius: 5px;
+    background-color: #fffacd;
+    padding: 4px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid #333;
+  }
 }
