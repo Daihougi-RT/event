@@ -46,14 +46,15 @@
                         <th class="contact-item">イベント名</th>
                         <td class="contact-body">
                             <label class="contact-keitai">
-                                <input type="radio" id="MRI" name="entry.2100736645" required="required" value="2023年1月30日（月）明日から役立つセミナー「MRI」"/>
-                                <span class="contact-skill-txt">2023年1月30日（月）明日から役立つセミナー「MRI」</span><br>
-                                <span class="contact-skill-txt" style="color:red">注：上記セミナーの会場参加は締め切りました</span>
+                                <input type="radio" id="event1" name="entry.2100736645" required="required" value="2023年1月30日（月）明日から役立つセミナー「MRI」"/>
+                                <span class="contact-skill-txt" id="edit_area10">2023年1月30日（月）明日から役立つセミナー「MRI」</span>
+                                <span class="contact-skill-txt" id="edit_area1"></span>
 
                             </label>
                             <label class="contact-skill">
-                                <input type="radio" id="event" name="entry.2100736645" value="2023年3月4日（土）組織部学術セミナー（担当：北ブロック）"/>
-                                <span class="contact-skill-txt" id="edit_area1">2023年3月4日（土）組織部学術セミナー（担当：北ブロック）</span>
+                                <input type="radio" id="event2" name="entry.2100736645" value="2023年3月4日（土）組織部学術セミナー（担当：北ブロック）"/>
+                                <span class="contact-skill-txt" id="edit_area20">2023年3月4日（土）組織部学術セミナー（担当：北ブロック）</span>
+                                <span class="contact-skill-txt" id="edit_area2"></span>
                             </label>                                                                               
                         </td>
                     </tr>
@@ -63,11 +64,11 @@
                         <td class="contact-body">
                             <label class="contact-keitai">
                                 <input type="radio" id="web" name="entry.1424661284" value="Web参加" checked="checked"/>
-                                <span class="contact-skill-txt">Web参加　会員優先 先着80名（当日まで受付）</span>
+                                <span class="contact-skill-txt" id="edit_area3">Web参加　会員優先 先着80名（当日まで受付）</span>
                             </label>
                             <label class="contact-skill">
                                 <input type="radio" id="kaijyo" name="entry.1424661284" value="会場参加"/>
-                                <span class="contact-skill-txt" id="edit_area">会場参加　会員限定 先着12名（3日前まで受付）</span>
+                                <span class="contact-skill-txt" id="edit_area4">会場参加　会員限定 先着12名（3日前まで受付）</span>
                             </label>                                                           
                         </td>
                     </tr>
@@ -170,8 +171,8 @@
                 var mail = document.getElementById("email_1").value; //メールフォームの値を取得
                 var mailConfirm = input.value; //メール確認用フォームの値を取得(引数input)
  
-                //input.setCustomValidity(mail)
-                // パスワードの一致確認
+                //*input.setCustomValidity(mail)
+                //* パスワードの一致確認
                 if(mail != mailConfirm){
                   input.setCustomValidity('メールアドレスが一致しません'); // エラーメッセージのセット
                 }else{
@@ -179,7 +180,7 @@
                 }
               }
               function connecttext0(id, ischecked ) {           //大放技会員の場合
-                  // チェック状態に合わせて有効・無効を切り替える
+                  //* チェック状態に合わせて有効・無効を切り替える
                   if(ischecked==true){
                       document.getElementById("textforscb3").disabled = true;                  
                       document.getElementById("nn").disabled = false;                 
@@ -193,7 +194,7 @@
                   }
               }
               function connecttext1(id, ischecked ) {           //他府県会員の場合
-                  // チェック状態に合わせて有効・無効を切り替える
+                  //* チェック状態に合わせて有効・無効を切り替える
                   if(ischecked==true){
                       document.getElementById("textforscb3").disabled = true;            
                       document.getElementById("nn").disabled = false;                 
@@ -207,7 +208,7 @@
                   }
               }
               function connecttext2(id, ischecked ) {            //非会員の場合
-                  // チェック状態に合わせて有効・無効を切り替える
+                  //* チェック状態に合わせて有効・無効を切り替える
                   if(ischecked==true){
                       document.getElementById("textforscb3").disabled = false;
                       document.getElementById("nn").disabled = true;                 
@@ -230,7 +231,7 @@
                   // }
              //  }
               function connecttext4(id, ischecked ) {            //府民の場合
-                  // チェック状態に合わせて有効・無効を切り替える
+                  //* チェック状態に合わせて有効・無効を切り替える
                   if(ischecked==true){
                       document.getElementById("textforscb3").disabled = true;
                       document.getElementById("nn").disabled = true;                 
@@ -242,52 +243,61 @@
                       document.getElementById("conf").value = "申込不可";  //府民用レイアウトする
                       document.getElementById("conf").disabled = true;  //府民用押せなくする                      
                   }
-              } 
+              }              
               
-              //定員に達した場合の処理　MRIの会場がいっぱいの場合
-              function valueChange1(){
-                if (this.checked) {
-                  document.getElementById("kaijyo").disabled = true;
-                  document.getElementById("edit_area").style.color = "gray";              
-                }
-            }
-              function valueChange2(){
-                if (this.checked) {
-                  document.getElementById("kaijyo").disabled = false;
-                  document.getElementById("edit_area").style.color = "black";                   
-                    }  
-              }
-                let ele1 = document.getElementById('MRI');
-                let ele2 = document.getElementById('event');
-                ele1.addEventListener('change', valueChange1);
-                ele2.addEventListener('change', valueChange2);
-        
+              //  開催日・会場参加の締め切り日設定
+              var kaisai_day1 = new Date("2022-12-16T23:59:59");  // event1(MRI) の開催日を指定 '2021-12-16T16:36:59'
+              var kaisai_day2 = new Date("2023-03-04T23:59:59");  // event2(組織)の開催日を指定 '2021-12-16T16:36:59'
+              var today = new Date();                             // 今日の日付を取得 
+              var todaytime  = today.getTime();                   // 今日の日付を時間に変換 
+              var web1_endtime  = kaisai_day1.getTime();          // 開催日（締切日）を時間に変換
 
-              //会場参加の締め切り日設定
-              var todayObj = new Date(); 
-              var today   = todayObj.getTime();
-              var endObj   = new Date("締切日の指定");  // 締切日の指定 '2021-12-16T16:36:59'
-              var end   = endObj.getTime();
-              var comment = "";
-              if(end <= today){// 有効期限の範囲外
-                  comment= "<font color='red'>会場参加は締め切りました（締切日)</font>";
-                  document.getElementById("edit_area").innerHTML = comment;
-                  document.getElementById("kaijyo").disabled = true;  //締切後押せなくする
-              }
-              //イベント終了後
-              var endObj2   = new Date("開催日を指定");  // 開催日を指定 '2021-12-16T16:36:59'
-              var end2   = endObj2.getTime();
-              var comment2 = "";
-              if(end2 <= today){// 有効期限の範囲外
-                  comment2= "<font color='red'>このイベントは終了しました</font>";
-                  document.getElementById("edit_area2").innerHTML = comment2;
-                  document.getElementById("conf").style.backgroundColor = "gray";  //締切後グレイアウトする
-                  document.getElementById("conf").value = "終　了";  //締切後レイアウトする
-                  document.getElementById("conf").disabled = true;  //締切後押せなくする
-                  
-                  //<button style="background-color:red">締　切</button>
-              }                 
-            // -->
+              //　ここを変更！！  もしevent1の定員がいっぱいになった時は”-3”を大きな数字に代えて，締め切る！！！
+              var kaijyo1_endtime  = kaisai_day1.setDate(kaisai_day1.getDate() -50); // 締切日を3日前にして時間に変換
+              var comment1 = "";
+             
+              if(web1_endtime < kaijyo1_endtime <= todaytime){// 会場参加の締め切り
+                  let event1 = document.getElementById('event1');
+                  event1.addEventListener('change', valueChange1);
+                  let event2 = document.getElementById('event2');
+                  event2.addEventListener('change', valueChange2);
+                  comment1= "<font color='red'>注：上記イベントの会場参加は締め切りました</font>";
+                  document.getElementById("edit_area1").innerHTML = comment1;
+
+                  function valueChange1(){
+                    if (event1.checked) {
+                      document.getElementById("kaijyo").disabled = true;
+                      document.getElementById("edit_area4").style.color = "gray";              
+                    }
+                  }
+                  function valueChange2(){
+                    if (event2.checked) {
+                      document.getElementById("kaijyo").disabled = false;
+                      document.getElementById("edit_area4").style.color = "black";                   
+                    }  
+                  }   
+               }
+
+              if(web1_endtime <= todaytime){// event1開催日にWebも締め切り
+                comment1= "<font color='red'>注：上記イベントは締め切りました</font>";
+                document.getElementById("edit_area1").innerHTML = comment1;
+                document.getElementById("event1").disabled = true;
+                document.getElementById("edit_area10").style.color = "gray";             
+                }
+
+              //* イベント終了後
+             //*var endObj2   = new Date("開催日を指定");  // 開催日を指定 '2021-12-16T16:36:59'
+              //*var end2   = endObj2.getTime();
+             //* var comment2 = "";
+              //*if(end2 <= today){// 有効期限の範囲外
+             //*     comment2= "<font color='red'>このイベントは終了しました</font>";
+              //*    document.getElementById("edit_area2").innerHTML = comment2;
+              //*    document.getElementById("conf").style.backgroundColor = "gray";  //締切後グレイアウトする
+             //*     document.getElementById("conf").value = "終　了";  //締切後レイアウトする
+              //*    document.getElementById("conf").disabled = true;  //締切後押せなくする      
+                               //*<button style="background-color:red">締　切</button>
+             //* }                 
+            //* -->
             </script>            
         </div>
     </body>
