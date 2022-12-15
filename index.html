@@ -1,4 +1,4 @@
- <!DOCTYPE html>  
+<!DOCTYPE html>  
 <html lang="ja">
     <head>
         <meta charset="utf-8" />
@@ -255,11 +255,18 @@
               //　ここを変更！！  もしevent1の定員がいっぱいになった時は”-3”を大きな数字に代えて，締め切る！！！
               var kaijyo1_endtime  = kaisai_day1.setDate(kaisai_day1.getDate() -3); // 締切日を3日前にして時間に変換
               var comment1 = "";
-             
-              if(web1_endtime < kaijyo1_endtime <= todaytime){// 会場参加の締め切り
+
+              if(web1_endtime < todaytime){// event1開催日にWebも締め切り
+                
+                comment1= "<font color='red'>注：上記イベントは締め切りました</font>";
+                document.getElementById("edit_area1").innerHTML = comment1;
+                document.getElementById("event1").disabled = true;
+                document.getElementById("edit_area10").style.color = "gray";    
+
+                }else if(kaijyo1_endtime < todaytime){// 会場参加の締め切り 
                   let event1 = document.getElementById('event1');
                   event1.addEventListener('change', valueChange1);
-                  let event2 = document.getElementById('event2');
+                  let event2 = document.getElementById('event2');           
                   event2.addEventListener('change', valueChange2);
                   comment1= "<font color='red'>注：上記イベントの会場参加は締め切りました</font>";
                   document.getElementById("edit_area1").innerHTML = comment1;
@@ -278,12 +285,6 @@
                   }   
                }
 
-              if(web1_endtime <= todaytime){// event1開催日にWebも締め切り
-                comment1= "<font color='red'>注：上記イベントは締め切りました</font>";
-                document.getElementById("edit_area1").innerHTML = comment1;
-                document.getElementById("event1").disabled = true;
-                document.getElementById("edit_area10").style.color = "gray";             
-                }
 
               //* イベント終了後
              //*var endObj2   = new Date("開催日を指定");  // 開催日を指定 '2021-12-16T16:36:59'
